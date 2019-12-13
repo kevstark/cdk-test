@@ -4,6 +4,8 @@ boto3
 # Pip packages for project development
 pep8
 # CDK
+aws-cdk.core
 aws-cdk.aws-lambda
 aws-cdk.aws-s3
-aws-cdk.core
+aws-cdk.aws_sns
+aws-cdk.aws_sns_subscriptions

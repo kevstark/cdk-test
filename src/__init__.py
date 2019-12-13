@@ -1,1 +1,2 @@
-from .simplestack import SimpleStack
+from .queuestack import QueueStack
+from .joinstack import JoinStack

@@ -7,19 +7,17 @@ from aws_cdk import (
 )
 
 
-class SimpleStack(core.Stack):
+class QueueStack(core.Stack):
 
     def __init__(self, app: core.App, id: str, **kwargs) -> None:
         super().__init__(app, id, **kwargs)
 
-        queue = sqs.Queue(
-            self, "MyFirstQueue",
+        self.queue = sqs.Queue(
+            self, "sqs",
             visibility_timeout=core.Duration.seconds(300),
         )
 
-        topic = sns.Topic(
-            self, "MyFirstTopic",
-            display_name="My First Topic"
-        )
-
-        topic.add_subscription(subs.SqsSubscription(queue))
+        #core.CfnOutput(
+        #    self, "queue_arn",
+        #    value = self.queue.queue_arn,
+        #)
