@@ -1,0 +1,9 @@
+# System tools
+awscli
+boto3
+# Pip packages for project development
+pep8
+# CDK
+aws-cdk.aws-lambda
+aws-cdk.aws-s3
+aws-cdk.core
