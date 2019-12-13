@@ -11,7 +11,7 @@ from src import QueueStack
 class JoinStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str,
-        queue_arn: List[str],
+        queues: List[QueueStack],
         **kwargs
     ) -> None:
 
@@ -21,8 +21,10 @@ class JoinStack(core.Stack):
             self, "sns",
             #display_name="My First Topic"
         )
-        for q in queue_arn:
-            qq = sqs.Queue.from_queue_arn(self, 'q1', q)
+        for i, q in enumerate(queues):
+            self.add_dependency(q)
+            qarn = core.Fn.import_value(f"{q.stack_name}-queuearn")
+            qq=sqs.Queue.from_queue_arn(self, f'q{i}', qarn)
             topic.add_subscription(subs.SqsSubscription(qq))
 
 

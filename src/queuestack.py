@@ -17,7 +17,8 @@ class QueueStack(core.Stack):
             visibility_timeout=core.Duration.seconds(300),
         )
 
-        #core.CfnOutput(
-        #    self, "queue_arn",
-        #    value = self.queue.queue_arn,
-        #)
+        core.CfnOutput(
+            self, "queue_arn",
+            value = self.queue.queue_arn,
+            export_name=f"{self.stack_name}-queuearn"
+        )

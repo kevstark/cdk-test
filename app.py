@@ -8,8 +8,7 @@ from src import (QueueStack, JoinStack)
 app = core.App()
 
 q1 = QueueStack(app, 'Test1')
-#q2 = QueueStack(app, 'Test2')
+q2 = QueueStack(app, 'Test2')
 
-j1 = JoinStack(app, 'JoinA', queue_arn=[q1.queue.queue_arn])
-j1.add_dependency(q1)
+j1 = JoinStack(app, 'JoinA', queues=[q1, q2])
 app.synth()
